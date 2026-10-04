@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>임태형 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            '50': '#eff6ff',
+                            '100': '#dbeafe',
+                            '200': '#bfdbfe',
+                            '300': '#93c5fd',
+                            '400': '#60a5fa',
+                            '500': '#3b82f6',
+                            '600': '#2563eb',
+                            '700': '#1d4ed8',
+                            '800': '#1e40af',
+                            '900': '#1e3a8a',
+                            '950': '#172554',
+                        },
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        html { scroll-behavior: smooth; }
+        body { display: none; }
+        section { scroll-margin-top: 24px; }
+        .tag { display: inline-block; font-size: 0.8rem; font-weight: 500; padding: 0.2rem 0.7rem; border-radius: 9999px; }
+        .shot { width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+        .shot-link { display: block; transition: transform .15s; }
+        .shot-link:hover { transform: translateY(-2px); }
+        code { background: #f1f5f9; color: #b45309; padding: 0.1rem 0.4rem; border-radius: 0.25rem; font-size: 0.85em; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 font-sans antialiased">
+
+    <div class="flex flex-col md:flex-row">
+        <!-- ===================== 사이드바 ===================== -->
+        <aside class="w-full md:w-80 lg:w-96 md:h-screen md:fixed top-0 left-0 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-8 overflow-y-auto">
+            <div class="flex flex-col h-full">
+                <div class="flex-shrink-0 text-center md:text-left">
+                    <img class="h-32 w-32 rounded-full object-cover object-top border-4 border-white shadow-lg mx-auto md:mx-0"
+                         src="images/me.jpg"
+                         alt="임태형 프로필 사진"
+                         onerror="this.src='https://placehold.co/200x200/e2e8f0/334155?text=Profile'">
+
+                    <h1 class="text-3xl font-extrabold text-slate-900 mt-6 mb-2">임태형</h1>
+                    <p class="text-lg font-medium text-primary-600 mb-1">
+                        시스템 엔지니어 지원
+                    </p>
+                    <p class="text-sm text-slate-500 mb-4">네트워크 관리 · 서버 관리/구축 · 시스템 운영</p>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                        공군 전산특기병으로 라우터와 전산 장비를 관리했고, 클라우드 기업 기술지원팀 현장실습에서 장애 1차 대응과 정기 점검을 경험했습니다.
+                        프로젝트에서도 장비 통신, 서비스 배포, 장애 감지처럼 시스템이 멈추지 않게 만드는 일에 집중해 왔습니다.
+                    </p>
+                </div>
+
+                <nav class="flex-grow mt-4 space-y-1">
+                    <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">About</h2>
+                    <a href="#about" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="user" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        소개 · 이력
+                    </a>
+                    <a href="#skills" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="cpu" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        기술 스택
+                    </a>
+
+                    <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">Projects</h2>
+                    <a href="#scada" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="factory" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        한국형 SCADA
+                    </a>
+                    <a href="#qring" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="cloud" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        Qring
+                    </a>
+                    <a href="#review" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="star" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        만물평론
+                    </a>
+                    <a href="#broom" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="sparkles" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        Broom
+                    </a>
+                    <a href="#whereami" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="train-front" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        여긴어디
+                    </a>
+                    <a href="#careernavi" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="compass" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        CareerNavi
+                    </a>
+                    <a href="#fairness" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="bar-chart-2" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        AI 공정성 연구
+                    </a>
+                    <a href="#dmuaid" class="group flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors">
+                        <i data-lucide="puzzle" class="w-4 h-4 mr-3 text-slate-500 group-hover:text-primary-600"></i>
+                        디유 에이드
+                    </a>
+                </nav>
+
+                <div class="flex-shrink-0 mt-10">
+                    <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Contact</h2>
+                    <ul class="text-sm text-slate-600 space-y-1 mb-3">
+                        <li><a href="mailto:kantaviyayaya@gmail.com" class="hover:text-primary-600">kantaviyayaya@gmail.com</a></li>
+                        <li><a href="mailto:cocoa0913@naver.com" class="hover:text-primary-600">cocoa0913@naver.com</a></li>
+                    </ul>
+                    <div class="flex space-x-4">
+                        <a href="mailto:kantaviyayaya@gmail.com" class="text-slate-500 hover:text-primary-600 transition-colors" title="Email">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/cocoa0913" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors" title="GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===================== 본문 ===================== -->
+        <main class="w-full md:ml-80 lg:ml-96 p-6 md:p-12 animate-fade-in-up">
+
+            <!-- ===== 소개 ===== -->
+            <section id="about" class="mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 tracking-tight">소개 · 이력</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-primary-500">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="briefcase" class="w-5 h-5 mr-2 text-primary-600"></i> 실무 경험
+                        </h3>
+                        <p class="font-semibold text-slate-800">엠클라우독 기술지원팀 현장실습</p>
+                        <p class="text-sm text-slate-500 mb-3">2025.07 ~ 2025.08 · 클라우드 솔루션 기업 · 실습생</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600">
+                            <li>고객사 시스템 사용 문의 및 장애 접수 1차 대응</li>
+                            <li>인시던트 관리 시스템에 기술 이슈 티켓 등록·분류 및 이슈 트래킹</li>
+                            <li>고객사 시스템 정기 월간점검·로그 점검 지원으로 잠재 오류 사전 예방</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-primary-500">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="shield" class="w-5 h-5 mr-2 text-primary-600"></i> 군 경력
+                        </h3>
+                        <p class="font-semibold text-slate-800">공군 전산특기병 (병장 만기전역)</p>
+                        <p class="text-sm text-slate-500 mb-3">2022.05 ~ 2024.02</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600">
+                            <li>부대 라우터 관리 업무 담당</li>
+                            <li>전산 장비 유지보수 및 타 부서 하드웨어 장애 지원</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-slate-400">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-slate-600"></i> 학력
+                        </h3>
+                        <p class="font-semibold text-slate-800">동양미래대학교 컴퓨터소프트웨어공학과</p>
+                        <ul class="space-y-2 text-sm text-slate-600 mt-3">
+                            <li class="flex justify-between gap-4"><span>2026.03 ~ 2027.02 · 학사학위 전공심화 <span class="text-primary-600 font-medium">졸업예정</span></span><span class="font-semibold text-slate-800 whitespace-nowrap">4.29 / 4.5</span></li>
+                            <li class="flex justify-between gap-4"><span>2021.03 ~ 2026.02 · 졸업</span><span class="font-semibold text-slate-800 whitespace-nowrap">3.78 / 4.5</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-slate-400">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="badge-check" class="w-5 h-5 mr-2 text-slate-600"></i> 자격증 · 어학
+                        </h3>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li class="flex justify-between gap-4"><span class="font-semibold text-slate-800">리눅스마스터 2급</span><span class="text-slate-500 whitespace-nowrap">2025.03 · 한국정보통신진흥협회</span></li>
+                            <li class="flex justify-between gap-4"><span class="font-semibold text-slate-800">프로그래밍기능사</span><span class="text-slate-500 whitespace-nowrap">2021.12 · 한국산업인력공단</span></li>
+                            <li class="flex justify-between gap-4"><span class="font-semibold text-slate-800">新JLPT N3</span><span class="text-slate-500 whitespace-nowrap">2024.01</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-amber-400">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="award" class="w-5 h-5 mr-2 text-amber-500"></i> 수상
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li>
+                                <p class="font-semibold text-slate-800">2026 한국정보기술학회 하계 대학생논문경진대회 동상</p>
+                                <p class="text-slate-500">한국정보기술학회 · 2026 · 연구 주제 <a href="#broom" class="text-primary-600 hover:underline">Broom</a></p>
+                            </li>
+                            <li>
+                                <p class="font-semibold text-slate-800">생성형AI활용개발실무 경진대회 우수상</p>
+                                <p class="text-slate-500">동양미래대학교 · 2025.12 · 출품작 <a href="#broom" class="text-primary-600 hover:underline">Broom</a></p>
+                            </li>
+                            <li>
+                                <p class="font-semibold text-slate-800">2021 LG소셜캠퍼스 1분1초영화제 BRONZE FILM</p>
+                                <p class="text-slate-500">LG소셜캠퍼스 · 2021</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-violet-400">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="users" class="w-5 h-5 mr-2 text-violet-600"></i> 동아리
+                        </h3>
+                        <p class="font-semibold text-slate-800">전공 학술·개발 동아리 M.I.T 회장</p>
+                        <p class="text-sm text-slate-500 mb-3">2026.03 ~ 2026.07</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600">
+                            <li>연간 활동 계획 수립, 전공 스터디·프로젝트 커리큘럼 기획</li>
+                            <li>신규 부원 모집, 부원 간 기술 교류 활성화</li>
+                            <li>프로젝트 일정 조율, 학과·외부 행사 연계</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-emerald-400 lg:col-span-2">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 mr-2 text-emerald-600"></i> 학술 활동
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li>
+                                <p class="font-semibold text-slate-800">2026 대한전자공학회 추계학술대회 논문경진대회 — 주저자, 논문집 등재</p>
+                                <p class="text-slate-500">AI 공정성(Fairness) 연구 · <a href="#fairness" class="text-primary-600 hover:underline">연구 보기</a></p>
+                            </li>
+                            <li>
+                                <p class="font-semibold text-slate-800">2026 한국정보기술학회 하계종합학술대회 대학생논문경진대회 — 주저자, 동상</p>
+                                <p class="text-slate-500">AI 기반 자동 파일 관리·정리 및 실시간 모니터링 시스템 · <a href="#broom" class="text-primary-600 hover:underline">Broom</a></p>
+                            </li>
+                            <li>
+                                <p class="font-semibold text-slate-800">2025 대한전자공학회 추계학술대회 포스터 발표 — 제1저자</p>
+                                <p class="text-slate-500">디지털 약자를 위한 생성형 AI 기반 파일 정리 지원 서비스 개발 · <a href="#broom" class="text-primary-600 hover:underline">Broom</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== 기술 스택 ===== -->
+            <section id="skills" class="mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 tracking-tight">기술 스택</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2 text-primary-600"></i> Network · Infra
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag bg-primary-100 text-primary-800">Docker Compose</span>
+                            <span class="tag bg-primary-100 text-primary-800">Cloudflare Tunnel</span>
+                            <span class="tag bg-primary-100 text-primary-800">Nginx 리버스 프록시</span>
+                            <span class="tag bg-primary-100 text-primary-800">Rate Limiting</span>
+                            <span class="tag bg-primary-100 text-primary-800">DNS · TLS</span>
+                            <span class="tag bg-primary-100 text-primary-800">Linux (Ubuntu) CLI</span>
+                            <span class="tag bg-primary-100 text-primary-800">시리얼 통신 (LS XGT Cnet)</span>
+                            <span class="tag bg-primary-100 text-primary-800">Modbus</span>
+                            <span class="tag bg-primary-100 text-primary-800">REST / HTTP</span>
+                            <span class="tag bg-primary-100 text-primary-800">SMTP · FCM</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="code-2" class="w-5 h-5 mr-2 text-primary-600"></i> Backend
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag bg-slate-200 text-slate-800">Java · Spring Boot</span>
+                            <span class="tag bg-slate-200 text-slate-800">Python · FastAPI · Flask</span>
+                            <span class="tag bg-slate-200 text-slate-800">MySQL · PostgreSQL · SQLite</span>
+                            <span class="tag bg-slate-200 text-slate-800">Redis</span>
+                            <span class="tag bg-slate-200 text-slate-800">JWT · OAuth</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="activity" class="w-5 h-5 mr-2 text-primary-600"></i> Monitoring · 운영
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag bg-slate-200 text-slate-800">실시간 수집 · 알람</span>
+                            <span class="tag bg-slate-200 text-slate-800">장애 감지 · 로그 분석</span>
+                            <span class="tag bg-slate-200 text-slate-800">스케줄러 · 자동화</span>
+                            <span class="tag bg-slate-200 text-slate-800">Windows 서비스 등록</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                            <i data-lucide="smartphone" class="w-5 h-5 mr-2 text-primary-600"></i> Client · AI
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag bg-slate-200 text-slate-800">Flutter</span>
+                            <span class="tag bg-slate-200 text-slate-800">React · TypeScript</span>
+                            <span class="tag bg-slate-200 text-slate-800">Chrome Extension (MV3)</span>
+                            <span class="tag bg-slate-200 text-slate-800">LLM API</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===================== 1. 한국형 SCADA ===================== -->
+            <section id="scada" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 01</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">한국형 클라우드 SCADA HMI 시스템 — PLC 원격 모니터링·제어</h2>
+                <p class="text-slate-500 mb-6">2026.07 ~ 2026.10 · 수공테크 산학협력 · AI 개발 및 현업 문제점 개선 담당 · 비공개 저장소</p>
+
+                <a href="images/scada_dashboard.png" target="_blank" class="shot-link">
+                    <img src="images/scada_dashboard.png" alt="SCADA 모니터링 대시보드" class="shot"
+                         onerror="this.src='https://placehold.co/1440x900/0f172a/94a3b8?text=SCADA+Dashboard'">
+                </a>
+                <p class="text-sm text-slate-500 mt-2 mb-6">▲ 모니터링 대시보드 (시연 모드). 센서별 실시간 값과 추이, 4등급 알람, 장치 제어 패널</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <a href="images/scada_trend.png" target="_blank" class="shot-link">
+                            <img src="images/scada_trend.png" alt="센서 상세·트렌드 화면" class="shot"
+                                 onerror="this.src='https://placehold.co/1440x900/0f172a/94a3b8?text=Trend'">
+                        </a>
+                        <p class="text-sm text-slate-500 mt-2">▲ 센서 상세 화면. 기간별 트렌드와 임계선, 관련 제어, 최근 조작 이력</p>
+                    </div>
+                    <div>
+                        <a href="images/scada_hmi.png" target="_blank" class="shot-link">
+                            <img src="images/scada_hmi.png" alt="공조 설비 HMI 화면" class="shot"
+                                 onerror="this.src='https://placehold.co/1200x800/e2e8f0/334155?text=SCADA+HMI'">
+                        </a>
+                        <p class="text-sm text-slate-500 mt-2">▲ 공조 설비(AHU·VAV·댐퍼) HMI 배경. 도면을 AI가 분석해 만든 화면 위에 실시간 값을 배치합니다.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200 mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">개요</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        수공테크와의 산학협력으로 진행한 프로젝트입니다. 관제 현업의 <strong class="text-slate-800">수동 모니터링 방식과 장애 감지 지연</strong>을 문제로 정의하고,
+                        현장의 LS산전 XGT PLC에서 온도·습도·차압 등 센서 값을 실시간으로 수집해 웹에서 모니터링·알람·원격 제어를 할 수 있는 SCADA 시스템을 만들었습니다.
+                        현장 PC의 에이전트가 PLC 데이터를 클라우드 서버로 보내는 구조라서, 작업자는 사무실에서도 여러 현장을 원격으로 확인할 수 있습니다.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>PLC <strong class="text-slate-800">시리얼(Cnet) 통신</strong>으로 실데이터 수신 성공, Modbus 테스트 도구 별도 작성</li>
+                            <li>센서 소스를 추상화해 <strong class="text-slate-800">코드 수정 없이</strong> 관리자 페이지에서 센서·임계값 추가</li>
+                            <li>4등급 알람 (주의 / 경고 / 위험 / <strong class="text-slate-800">연결 끊김</strong>)과 로그파일·이메일·웹훅 알림</li>
+                            <li>SQLite 일별 파티션, 1분·1시간 집계, 알람 저널, 조작 이력(audit) 기록</li>
+                            <li>시뮬레이션 / 실장비 모드를 <strong class="text-slate-800">실행 파일·설정·DB까지 분리</strong>해 시연 중 실장비 설정 오염 방지</li>
+                            <li><strong class="text-slate-800">AI HMI 어시스턴트:</strong> 도면 이미지를 분석해 HMI 화면을 자동 생성하고 대화로 수정. 모델 출력은 허용된 요소·좌표 범위로 검증하고, API 키는 서버에만 보관</li>
+                            <li>PDF·CAD(DXF) 도면에서 장비 태그·좌표를 추출해 AI 배치의 위치 힌트로 활용</li>
+                            <li>같은 저장소에서 현장 측정 기록 앱(FieldLog) 개발: 엑셀 보고서 자동 생성, 원본 대비 셀 432개 불일치 0건</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">통신 장애를 별도 상태로 구분:</strong> PLC 응답이 없으면(포트 없음·케이블 빠짐) "위험"이 아닌 회색 "연결 끊김"으로 표시하고, 가짜 값으로 대체하지 않습니다.</li>
+                            <li><strong class="text-slate-900">현장 에이전트 → 클라우드 push 구조:</strong> 클라우드 서버에 연결할 수 없으면 데이터를 디스크에 버퍼링했다가 재연결 시 전송합니다.</li>
+                            <li><strong class="text-slate-900">중앙 설정 배포:</strong> PLC 주소·포트 맵을 클라우드 관리자 페이지에서 관리하고, 에이전트가 이를 내려받아 적용합니다. 에이전트는 키로 인증합니다.</li>
+                            <li><strong class="text-slate-900">무중단 운영:</strong> Windows 부팅 시 자동 시작 등록, 비밀번호 pbkdf2 해시 저장</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Python</span>
+                    <span class="tag bg-slate-200 text-slate-800">Flask</span>
+                    <span class="tag bg-slate-200 text-slate-800">pyserial</span>
+                    <span class="tag bg-slate-200 text-slate-800">SQLite</span>
+                    <span class="tag bg-slate-200 text-slate-800">ezdxf</span>
+                    <span class="tag bg-slate-200 text-slate-800">LS XGT PLC</span>
+                </div>
+            </section>
+
+            <!-- ===================== 2. Qring ===================== -->
+            <section id="qring" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 02</p>
+                <div class="flex items-center gap-4 mb-2">
+                    <img src="images/qring_img.png" alt="Qring 마스코트" class="w-14 h-14 object-contain" onerror="this.style.display='none'">
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Qring — 외국어 퀴즈 학습 앱 (백엔드 · 배포)</h2>
+                </div>
+                <p class="text-slate-500 mb-6">2026.04 ~ 2026.09 · 팀 4명 · 백엔드 담당 · 백엔드 커밋 241건 중 145건</p>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200 mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">배포 아키텍처</h3>
+                    <!-- 배포 구성도 -->
+                    <div class="flex flex-col lg:flex-row items-stretch gap-3 text-sm">
+                        <div class="flex-1 rounded-lg bg-primary-500 text-white p-4 text-center">
+                            <i data-lucide="smartphone" class="w-6 h-6 mx-auto mb-2"></i>
+                            <p class="font-bold">사용자 앱 · 브라우저</p>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-400 text-xs font-semibold">HTTPS →</div>
+                        <div class="flex-1 rounded-lg bg-orange-500 text-white p-4 text-center">
+                            <i data-lucide="cloud" class="w-6 h-6 mx-auto mb-2"></i>
+                            <p class="font-bold">Cloudflare Edge</p>
+                            <p class="text-xs opacity-90">DNS · TLS 종료 (q-ring.app)</p>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-400 text-xs font-semibold text-center">← QUIC 터널<br>(아웃바운드)</div>
+                        <div class="flex-[2] rounded-lg border-2 border-dashed border-slate-300 p-4">
+                            <p class="text-xs font-bold text-slate-500 mb-3 text-center">온프레미스 PC · Docker Compose 네트워크</p>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="rounded bg-emerald-500 text-white p-2 text-center"><p class="font-bold">cloudflared</p><p class="text-xs">외부 포트 없음</p></div>
+                                <div class="rounded bg-emerald-600 text-white p-2 text-center"><p class="font-bold">Spring Boot</p><p class="text-xs">:8080</p></div>
+                                <div class="rounded bg-pink-500 text-white p-2 text-center"><p class="font-bold">MySQL 8</p><p class="text-xs">:3306</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">▲ 공인 IP·포트포워딩·방화벽 변경 없이 외부에 서비스를 공개한 구조</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>회원가입·로그인·이메일 인증, <strong class="text-slate-800">JWT</strong> 인증, 카카오 등 <strong class="text-slate-800">소셜 로그인</strong>과 닉네임 중복 처리</li>
+                            <li>대시보드(이번 주 요일별 학습 여부), 포인트 적립, 오답노트 API</li>
+                            <li><strong class="text-slate-800">FCM 푸시 알림</strong> 설계·구현: 오답 생성 6일차 20시 리마인더 스케줄러, 1인 다기기 토큰 테이블</li>
+                            <li>OpenAI 기반 인터랙티브 스토리 기능 (JSON 응답 모드, 세션 TTL 관리)</li>
+                            <li>배포 가이드·API 명세·파일 맵·푸시 알림 설계서 등 문서화, Git 컨벤션 운영</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">NAT 뒤의 서버를 외부에 공개:</strong> cloudflared가 Cloudflare로 아웃바운드 QUIC 연결을 먼저 맺고, 사용자 요청이 그 연결을 타고 들어오도록 구성했습니다.</li>
+                            <li><strong class="text-slate-900">컨테이너 네트워크:</strong> 3개 서비스가 같은 Docker 네트워크에서 서비스 이름으로 통신하고, DB는 healthcheck를 통과한 뒤 백엔드가 기동되도록 순서를 지정했습니다.</li>
+                            <li><strong class="text-slate-900">재현 가능한 배포:</strong> <code>git clone</code> → 시크릿 파일 2개 복사 → <code>docker compose up -d --build</code> 한 줄로 다른 PC에 이전할 수 있습니다.</li>
+                            <li><strong class="text-slate-900">환경 차이로 생긴 장애 해결:</strong> Docker(Linux)의 MySQL에서만 테이블명 대소문자가 구분되어 생긴 오류를 찾아 수정했습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Java 21</span>
+                    <span class="tag bg-slate-200 text-slate-800">Spring Boot</span>
+                    <span class="tag bg-slate-200 text-slate-800">Spring Security · JWT</span>
+                    <span class="tag bg-slate-200 text-slate-800">JPA · MySQL 8</span>
+                    <span class="tag bg-slate-200 text-slate-800">Docker Compose</span>
+                    <span class="tag bg-slate-200 text-slate-800">Cloudflare Tunnel</span>
+                    <span class="tag bg-slate-200 text-slate-800">Firebase FCM</span>
+                    <a href="https://github.com/2026-dmu-quiz-language/qring_backend" target="_blank" rel="noopener noreferrer"
+                       class="ml-auto inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-800">
+                        <i data-lucide="github" class="w-4 h-4 mr-1"></i> GitHub
+                    </a>
+                </div>
+            </section>
+
+            <!-- ===================== 만물평론 ===================== -->
+            <section id="review" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 03</p>
+                <div class="flex items-center gap-4 mb-2">
+                    <img src="images/review_icon.png" alt="만물평론 아이콘" class="w-14 h-14 object-contain rounded-xl" onerror="this.style.display='none'">
+                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">만물평론 (All the Review) — 세상 만물 평론 커뮤니티</h2>
+                </div>
+                <p class="text-slate-500 mb-6">2025.11 ~ 2026.05 · 1인 개발 · 기획·프론트엔드·백엔드·배포 전담 · allreview.world 도메인 배포</p>
+
+                <a href="images/review_main.png" target="_blank" class="shot-link">
+                    <img src="images/review_main.png" alt="만물평론 메인 화면" class="shot mb-6"
+                         onerror="this.src='https://placehold.co/1200x800/e2e8f0/334155?text=All+the+Review'">
+                </a>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200 mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">배포 아키텍처</h3>
+                    <!-- 배포 구성도 -->
+                    <div class="flex flex-col lg:flex-row items-stretch gap-3 text-sm">
+                        <div class="flex-1 rounded-lg bg-primary-500 text-white p-4 text-center">
+                            <i data-lucide="globe" class="w-6 h-6 mx-auto mb-2"></i>
+                            <p class="font-bold">사용자 브라우저</p>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-400 text-xs font-semibold">HTTPS →</div>
+                        <div class="flex-1 rounded-lg bg-orange-500 text-white p-4 text-center">
+                            <i data-lucide="cloud" class="w-6 h-6 mx-auto mb-2"></i>
+                            <p class="font-bold">Cloudflare</p>
+                            <p class="text-xs opacity-90">allreview.world · www 라우팅</p>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-400 text-xs font-semibold text-center">← 터널<br>(아웃바운드)</div>
+                        <div class="flex-[3] rounded-lg border-2 border-dashed border-slate-300 p-4">
+                            <p class="text-xs font-bold text-slate-500 mb-3 text-center">Docker Compose 네트워크</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                <div class="rounded bg-emerald-500 text-white p-2 text-center"><p class="font-bold">cloudflared</p><p class="text-xs">ingress</p></div>
+                                <div class="rounded bg-sky-600 text-white p-2 text-center"><p class="font-bold">Nginx</p><p class="text-xs">정적 파일 · /api 프록시</p></div>
+                                <div class="rounded bg-emerald-600 text-white p-2 text-center"><p class="font-bold">Spring Boot</p><p class="text-xs">:8080</p></div>
+                                <div class="rounded bg-indigo-500 text-white p-2 text-center"><p class="font-bold">PostgreSQL 17</p><p class="text-xs">healthcheck</p></div>
+                                <div class="rounded bg-rose-500 text-white p-2 text-center"><p class="font-bold">Redis 7</p><p class="text-xs">요청 제한 카운터</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">▲ Nginx가 화면은 직접 응답하고 <code>/api</code> 요청만 백엔드로 넘기는 리버스 프록시 구조</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>"평가하지 못할 것은 없다" — 사물부터 개념까지 무엇이든 별점과 한줄평을 남기는 커뮤니티</li>
+                            <li><strong class="text-slate-800">위키백과 API</strong> 연동 검색, 결과가 없으면 사용자가 직접 항목 등록</li>
+                            <li>리뷰 수·좋아요·경과 시간을 반영한 <strong class="text-slate-800">HOT 점수</strong>를 5분마다 재계산</li>
+                            <li>이메일 인증 회원가입, <strong class="text-slate-800">Google · 카카오 · 네이버 · LINE</strong> 소셜 로그인, JWT 인증</li>
+                            <li>금지어 필터, 신고 누적 시 자동 블라인드, 경고·제재, 관리자 페이지</li>
+                            <li>한국어 · 영어 · 일본어 다국어 지원</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">Nginx 리버스 프록시:</strong> 한 도메인에서 화면과 API를 함께 제공하고, <code>X-Real-IP</code> · <code>X-Forwarded-For</code> 헤더로 실제 사용자 IP를 백엔드에 전달합니다.</li>
+                            <li><strong class="text-slate-900">IP 기반 요청 제한:</strong> 로그인 1분 10회, 회원가입 5회, 인증메일 재발송 3회처럼 엔드포인트별로 한도를 두고 Redis로 IP별 요청 수를 세어, 넘으면 <code>429 Too Many Requests</code>를 반환합니다. 무차별 대입 공격과 메일 폭탄을 막기 위한 장치입니다.</li>
+                            <li><strong class="text-slate-900">도메인 구매·DNS 설정·라우팅:</strong> 커스텀 도메인을 구매해 DNS를 설정하고, Cloudflare Tunnel ingress로 <code>allreview.world</code>와 <code>www</code>를 프론트 컨테이너에 연결하고, 그 외 호스트 요청은 404로 차단합니다.</li>
+                            <li><strong class="text-slate-900">안전한 기동 순서:</strong> PostgreSQL·Redis가 healthcheck를 통과한 뒤에만 백엔드가 뜨도록 의존성을 지정했습니다.</li>
+                            <li><strong class="text-slate-900">스팸 계정 차단:</strong> 일회용 이메일 도메인으로는 가입할 수 없게 막았습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="images/review_login.png" target="_blank" class="shot-link">
+                        <img src="images/review_login.png" alt="로그인 화면 (소셜 로그인 4종)" class="shot"
+                             onerror="this.src='https://placehold.co/600x450/e2e8f0/334155?text=Login'">
+                    </a>
+                    <div class="bg-white p-6 rounded-lg shadow border border-slate-200 text-sm text-slate-600 leading-relaxed flex flex-col justify-center">
+                        <p class="font-bold text-slate-900 mb-2">HOT 점수 공식</p>
+                        <p class="font-mono text-xs bg-slate-50 border border-slate-200 rounded p-3 mb-3">(리뷰 수 × W₁ + 좋아요 수 × W₂) ÷ (경과 시간 + 2)<sup>G</sup></p>
+                        <p>단순 개수 순이 아니라 시간이 지날수록 점수가 내려가도록 중력 계수 G를 두어, 지금 활발한 주제가 메인에 오르게 했습니다.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Java · Spring Boot</span>
+                    <span class="tag bg-slate-200 text-slate-800">Spring Security · JWT</span>
+                    <span class="tag bg-slate-200 text-slate-800">PostgreSQL</span>
+                    <span class="tag bg-slate-200 text-slate-800">Redis</span>
+                    <span class="tag bg-slate-200 text-slate-800">Nginx</span>
+                    <span class="tag bg-slate-200 text-slate-800">Docker Compose</span>
+                    <span class="tag bg-slate-200 text-slate-800">Cloudflare Tunnel</span>
+                    <span class="tag bg-slate-200 text-slate-800">React · TypeScript</span>
+                </div>
+            </section>
+
+            <!-- ===================== 3. Broom ===================== -->
+            <section id="broom" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 04</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Broom 🧹 — 생성형 AI 기반 파일 정리 · 모니터링 프로그램</h2>
+                <p class="text-slate-500 mb-6">2025 ~ 2026.06 · 팀 3명 · 2025 대한전자공학회 추계학술대회 포스터 (제1저자) · 2026 한국정보기술학회 하계 논문 (주저자)</p>
+                <div class="flex flex-wrap gap-2 mb-6 -mt-4">
+                    <span class="inline-flex items-center text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-3 py-1"><i data-lucide="award" class="w-4 h-4 mr-1"></i> 2026 한국정보기술학회 하계 대학생논문경진대회 동상</span>
+                    <span class="inline-flex items-center text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-3 py-1"><i data-lucide="award" class="w-4 h-4 mr-1"></i> 생성형AI활용개발실무 경진대회 우수상 (2025.12)</span>
+                </div>
+
+                <a href="images/broom_man.png" target="_blank" class="shot-link mb-6">
+                    <img src="images/broom_man.png" alt="Broom 메인 화면" class="shot mb-6"
+                         onerror="this.src='https://placehold.co/1200x600/dbeafe/1e3a8a?text=Broom'">
+                </a>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>사용자 수준별 3단계 모드 (간단 / 일반 / 프로)</li>
+                            <li>시스템 폴더를 건드리기 전 <strong class="text-slate-800">안전성 검사</strong>와 경고</li>
+                            <li>AI 청소 제안, 자연어 규칙 기반 폴더 정리, 폴더 아이콘 이미지 생성</li>
+                            <li>대용량 디렉토리 탐색을 <strong class="text-slate-800">C++ 모듈(pybind11)</strong>로 작성해 속도 개선, 순환 링크 방지</li>
+                            <li>사용자 11명 설문으로 만족도·난이도 분석 후 개선점 도출</li>
+                            <li>후속 연구로 파일 메타데이터·콘텐츠 기반 자동 분류 파이프라인과 저장소 실시간 모니터링 로직을 고도화하고, 비교 실험으로 검증해 논문 집필</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">능동적 모니터링:</strong> 지정한 저장 공간을 주기적으로 스캔하고, 규칙에 걸리면 이메일로 알립니다.</li>
+                            <li><strong class="text-slate-900">AI Ops식 로그 분석:</strong> 다른 프로그램이 한 파일 작업까지 감지해 로그로 남기고, AI가 무슨 작업이었는지 추론해 통계 대시보드로 보여줍니다.</li>
+                            <li><strong class="text-slate-900">안전한 파일 작업:</strong> 모든 정리·삭제 작업 전에 안전성 검사를 거치고, 정리 미리보기로 결과를 확인한 뒤 실행합니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="images/broom_analysis.png" target="_blank" class="shot-link">
+                        <img src="images/broom_analysis.png" alt="저장공간 분석 화면" class="shot"
+                             onerror="this.src='https://placehold.co/600x400/e2e8f0/334155?text=Analysis'">
+                    </a>
+                    <a href="images/broom_ai.png" target="_blank" class="shot-link">
+                        <img src="images/broom_ai.png" alt="AI 파일 분석 화면" class="shot"
+                             onerror="this.src='https://placehold.co/600x400/e2e8f0/334155?text=AI'">
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Python · Flet</span>
+                    <span class="tag bg-slate-200 text-slate-800">C++ · pybind11</span>
+                    <span class="tag bg-slate-200 text-slate-800">Gemini API</span>
+                    <span class="tag bg-slate-200 text-slate-800">watchdog</span>
+                    <span class="tag bg-slate-200 text-slate-800">Win32 API</span>
+                    <span class="ml-auto flex gap-4">
+                        <a href="images/broom_poster.pdf" target="_blank" class="inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-800">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-1"></i> 학술대회 포스터
+                        </a>
+                        <a href="https://cocoa0913.github.io/broom/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-800">
+                            <i data-lucide="external-link" class="w-4 h-4 mr-1"></i> 상세 페이지 · 다운로드
+                        </a>
+                        <a href="https://github.com/cocoa0913/broom" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-800">
+                            <i data-lucide="github" class="w-4 h-4 mr-1"></i> GitHub
+                        </a>
+                    </span>
+                </div>
+            </section>
+
+            <!-- ===================== 5. 여긴어디 ===================== -->
+            <section id="whereami" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 05</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">여긴어디 (WhereAmI) — 지하철 이동 도우미 앱</h2>
+                <p class="text-slate-500 mb-6">2025.12 ~ 2026.01 · 팀 프로젝트 · 커밋 56건 · 비공개 저장소</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <a href="images/whereami_1.png" target="_blank" class="shot-link">
+                        <img src="images/whereami_1.png" alt="경로 진행 중 메인 화면" class="shot"
+                             onerror="this.src='https://placehold.co/600x600/e2e8f0/334155?text=WhereAmI'">
+                    </a>
+                    <a href="images/whereami_2.png" target="_blank" class="shot-link">
+                        <img src="images/whereami_2.png" alt="경로 상세 화면" class="shot"
+                             onerror="this.src='https://placehold.co/600x600/e2e8f0/334155?text=Route'">
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>출발·도착역 선택, 지하철 전용 경로 검색, 환승·빠른 하차 위치 안내</li>
+                            <li>네이버 지도 연동, 호선별 색상 마커, 실시간 열차 위치 추적</li>
+                            <li>홈 화면 위젯, 상단 고정 알림, 음성 안내(TTS)</li>
+                            <li>역별 화장실(9호선 포함)·첫차·막차 정보</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">외부 API 4종 연동:</strong> ODsay(경로), 서울시 실시간 도착 정보, 국가철도공단, 네이버 지도. 역 검색 API를 교체하고 호출 방식을 바꿔 불필요한 요청을 줄였습니다.</li>
+                            <li><strong class="text-slate-900">불안정한 신호 처리:</strong> 지하에서는 GPS가 불안정하므로, 도착 정보 API 50% · GPS 30% · 센서 기반 추측 항법 20%를 가중 합산하고 GPS 오차가 50m를 넘으면 계산에서 자동 제외합니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Flutter · Dart</span>
+                    <span class="tag bg-slate-200 text-slate-800">Naver Map SDK</span>
+                    <span class="tag bg-slate-200 text-slate-800">Firebase Firestore</span>
+                    <span class="tag bg-slate-200 text-slate-800">공공데이터 API</span>
+                    <span class="tag bg-slate-200 text-slate-800">sensors_plus · geolocator</span>
+                </div>
+            </section>
+
+            <!-- ===================== 6. CareerNavi ===================== -->
+            <section id="careernavi" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 06</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">CareerNavi 🧭 — AI 진로·취업 지원 플랫폼</h2>
+                <p class="text-slate-500 mb-6">2026.07 ~ 2026.08 · 교외 경진대회 출품작 · 비공개 저장소</p>
+
+                <a href="images/careernavi_home.png" target="_blank" class="shot-link">
+                    <img src="images/careernavi_home.png" alt="CareerNavi 홈 화면" class="shot mb-6"
+                         onerror="this.src='https://placehold.co/1200x900/e2e8f0/334155?text=CareerNavi'">
+                </a>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>성향 진단 → AI 이력서 검토 → 맞춤 채용 매칭 → 자기소개서 첨삭 → 통합 대시보드</li>
+                            <li>공공데이터포털 잡알리오 API로 공공기관 실제 채용 공고 연동 (10분 캐시)</li>
+                            <li>Claude API로 서술형 피드백 생성 (정해진 JSON 형식으로 응답)</li>
+                            <li>엑셀 업로드로 이력서 자동 작성, 기관용 통계 대시보드</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 · 운영 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">LAN 연동:</strong> 서버가 자신의 LAN IP를 자동 감지해 QR에 넣고, 같은 Wi-Fi의 휴대폰에서 작성한 이력서가 PC 화면에 자동 반영됩니다(3초 폴링).</li>
+                            <li><strong class="text-slate-900">장애 대비 폴백:</strong> 외부 API 호출이 실패하거나 키가 없으면 내장 데이터·규칙 기반 모드로 자동 전환해, 오프라인 시연에서도 멈추지 않습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="images/careernavi_studio.png" target="_blank" class="shot-link md:col-span-2">
+                        <img src="images/careernavi_studio.png" alt="문서 스튜디오 화면" class="shot"
+                             onerror="this.src='https://placehold.co/800x500/e2e8f0/334155?text=Studio'">
+                    </a>
+                    <a href="images/careernavi_qr.png" target="_blank" class="shot-link">
+                        <img src="images/careernavi_qr.png" alt="QR 모바일 이력서 연동" class="shot"
+                             onerror="this.src='https://placehold.co/400x500/e2e8f0/334155?text=QR'">
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Python · FastAPI</span>
+                    <span class="tag bg-slate-200 text-slate-800">SQLite</span>
+                    <span class="tag bg-slate-200 text-slate-800">Claude API</span>
+                    <span class="tag bg-slate-200 text-slate-800">공공데이터포털 API</span>
+                    <span class="tag bg-slate-200 text-slate-800">Vanilla JS SPA</span>
+                </div>
+            </section>
+
+            <!-- ===================== 8. AI 공정성 분석 ===================== -->
+            <section id="fairness" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 07</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">AI 공정성(Fairness) 연구 — 신뢰 가능한 인공지능 구축</h2>
+                <p class="text-slate-500 mb-6">2026.05 ~ 2026.10 · 동양미래대학교 정부지원과제 연구원 · 2026 대한전자공학회 추계학술대회 논문경진대회 주저자 (논문집 등재)</p>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200 mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">담당 업무 — 공정성 평가지표 분석 및 편향 완화 알고리즘 검증</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                        <li>데이터 수집·학습 과정에서 나타나는 잠재적 왜곡과 집단 간 편향 식별</li>
+                        <li>최신 AI 공정성 평가지표 분석 및 편향 완화(Mitigation) 알고리즘 적용 실험</li>
+                        <li>모델 성능 저하를 막으면서 데이터 불균형·편향을 최소화하는 검증 프로세스 진행</li>
+                    </ul>
+                </div>
+
+                <p class="text-sm font-semibold text-slate-500 mb-3">기초 분석 예시 — COMPAS 재범 예측 데이터 (Logistic Regression / Random Forest)</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- 인종별 오탐률 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">인종별 오탐률 (FPR)</h3>
+                        <p class="text-xs text-slate-500 mb-6">재범하지 않을 사람을 "재범 위험"으로 잘못 판단한 비율</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="font-medium">흑인</span><span class="font-bold text-rose-600">0.31</span></div>
+                                <div class="h-4 bg-slate-100 rounded"><div class="h-4 bg-rose-500 rounded" style="width:62%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span class="font-medium">백인</span><span class="font-bold text-slate-600">0.16</span></div>
+                                <div class="h-4 bg-slate-100 rounded"><div class="h-4 bg-slate-400 rounded" style="width:32%"></div></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-6">실제 재범률 차이는 1.34배인데 오탐률 차이는 <strong class="text-slate-900">1.92배</strong>입니다.</p>
+                    </div>
+
+                    <!-- 성별 변수 제거 효과 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">성별 변수 제거 전후 오탐률</h3>
+                        <p class="text-xs text-slate-500 mb-6">남성 / 여성 FPR</p>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">성별 포함</p>
+                                <div class="flex items-center gap-2 text-xs"><span class="w-8">남</span><div class="flex-1 h-3 bg-slate-100 rounded"><div class="h-3 bg-primary-600 rounded" style="width:53.8%"></div></div><span class="w-10 text-right">0.269</span></div>
+                                <div class="flex items-center gap-2 text-xs mt-1"><span class="w-8">여</span><div class="flex-1 h-3 bg-slate-100 rounded"><div class="h-3 bg-primary-300 rounded" style="width:9.4%"></div></div><span class="w-10 text-right">0.047</span></div>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">성별 제외</p>
+                                <div class="flex items-center gap-2 text-xs"><span class="w-8">남</span><div class="flex-1 h-3 bg-slate-100 rounded"><div class="h-3 bg-primary-600 rounded" style="width:44%"></div></div><span class="w-10 text-right">0.220</span></div>
+                                <div class="flex items-center gap-2 text-xs mt-1"><span class="w-8">여</span><div class="flex-1 h-3 bg-slate-100 rounded"><div class="h-3 bg-primary-300 rounded" style="width:19.6%"></div></div><span class="w-10 text-right">0.098</span></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-6">격차가 5.7배에서 2.2배로 줄었지만 사라지지는 않았습니다.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">결론</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                        <li>인종·성별 변수를 빼도 예측 성능은 거의 그대로였습니다 (LR AUC 0.73, 정확도 0.680 → 0.688).</li>
+                        <li>그러나 전과·나이 등 다른 변수가 보호 속성을 대신 드러내기 때문에, <strong class="text-slate-800">변수 삭제만으로는 편향이 해결되지 않습니다.</strong></li>
+                        <li>집단 간 실제 재범률이 다르면 정확도와 오판율의 공정성을 동시에 만족할 수 없다는 "불가능성 정리"를 실험으로 확인했습니다.</li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">Python</span>
+                    <span class="tag bg-slate-200 text-slate-800">공정성 지표 (FPR · FNR)</span>
+                </div>
+            </section>
+
+            <!-- ===================== 9. 디유 에이드 ===================== -->
+            <section id="dmuaid" class="mb-16">
+                <p class="text-sm font-semibold text-primary-600 mb-1">PROJECT 08</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">디유 에이드 (DMU AID) — e-Class 크롬 확장 프로그램</h2>
+                <p class="text-slate-500 mb-6">2026.03 ~ 2026.04 · 1인 개발 · Chrome 웹 스토어 게시</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <a href="images/dmuaid_panel.png" target="_blank" class="shot-link">
+                        <img src="images/dmuaid_panel.png" alt="사이드 패널 대시보드" class="shot"
+                             onerror="this.src='https://placehold.co/800x500/e2e8f0/334155?text=Side+Panel'">
+                    </a>
+                    <a href="images/dmuaid_store.png" target="_blank" class="shot-link">
+                        <img src="images/dmuaid_store.png" alt="Chrome 웹 스토어 페이지" class="shot"
+                             onerror="this.src='https://placehold.co/800x500/e2e8f0/334155?text=Web+Store'">
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">구현 내용</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm leading-relaxed">
+                            <li>브라우저 사이드 패널에서 예정된 할 일, 새 과제·공지 알림, 수강 강좌를 한눈에 표시</li>
+                            <li>개인 To-Do 관리</li>
+                            <li>Chrome 웹 스토어에 직접 게시</li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-50 p-8 rounded-lg shadow-lg border-2 border-primary-200">
+                        <h3 class="text-xl font-bold text-primary-900 mb-4 flex items-center">
+                            <i data-lucide="network" class="w-5 h-5 mr-2"></i> 네트워크 관점
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                            <li><strong class="text-slate-900">세션 기반 연동:</strong> 사용자가 이미 로그인한 e-Class의 쿠키 세션을 이용해 별도 로그인 없이 데이터를 가져오고, 연결 상태를 표시합니다.</li>
+                            <li><strong class="text-slate-900">최소 권한:</strong> 접근 호스트를 e-Class 도메인 하나로 제한했습니다 (Manifest V3).</li>
+                            <li><strong class="text-slate-900">백그라운드 주기 확인:</strong> 서비스 워커와 alarms API로 새 과제·공지를 주기적으로 확인합니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 mt-6">
+                    <span class="tag bg-slate-200 text-slate-800">JavaScript</span>
+                    <span class="tag bg-slate-200 text-slate-800">Chrome Extension MV3</span>
+                    <span class="tag bg-slate-200 text-slate-800">Service Worker</span>
+                    <a href="https://github.com/cocoa0913/DMU_AID" target="_blank" rel="noopener noreferrer"
+                       class="ml-auto inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-800">
+                        <i data-lucide="github" class="w-4 h-4 mr-1"></i> GitHub
+                    </a>
+                </div>
+            </section>
+
+            <footer id="contact" class="mt-24 pt-12 border-t border-slate-200">
+                <div class="flex flex-col items-center text-center">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Contact Me</h2>
+                    <p class="text-slate-500 mb-6">kantaviyayaya@gmail.com · cocoa0913@naver.com</p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="mailto:kantaviyayaya@gmail.com" class="text-slate-500 hover:text-primary-600 transition-colors">
+                            <i data-lucide="mail" class="w-8 h-8"></i>
+                        </a>
+                        <a href="https://github.com/cocoa0913" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-primary-600 transition-colors">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                        </a>
+                    </div>
+                    <p class="mt-10 text-sm text-slate-500">
+                        &copy; 2026 임태형. All rights reserved.
+                    </p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+            document.body.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
